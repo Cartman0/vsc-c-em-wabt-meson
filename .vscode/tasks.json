@@ -1,0 +1,119 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "meson setup clang",
+            "type": "shell",
+            "command": "rm --recursive -f ./build_c/build && CC=clang meson build_c/build build_c",
+            "args": [
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+        },
+        {
+            "label": "meson Build .c",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "compile",
+                "--verbose"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build_c/build"
+            },
+            "presentation":{
+                "clear": true
+            }
+        },
+        {
+            "label": "meson Build & Run",
+            "type": "shell",
+            "command": "./hello",
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build_c/build"
+            },
+            "dependsOn": [
+                "meson Build .c"
+            ],
+        },
+        {
+            "label": "meson setup cross-emscripten",
+            "type": "shell",
+            "command": "rm --recursive -f ./build_to_wasm/build && meson setup build_to_wasm/build build_to_wasm --cross-file wasm.ini",
+            "args": [
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+        },
+        {
+            "label": "meson cross c2wasm",
+            "type": "shell",
+            "command": "meson",
+            "args": [
+                "compile",
+                "--verbose",
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build_to_wasm/build"
+            },
+            "presentation":{
+                "clear": true
+            }
+        },
+        {
+            "label": "node wasm",
+            "type": "shell",
+            "command": "node",
+            "args": [
+                "hello.js",
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}/build_to_wasm/build"
+            },
+            "dependsOn": [
+                "meson cross c2wasm"
+            ],
+        },
+        {
+            "label": "wasm2wat",
+            "type": "shell",
+            "command": "/wabt/bin/wasm2wat",
+            "args": [
+                "build_to_wasm/build/hello.wasm",
+                "-o",
+                "hello.wat"
+            ],
+            "group": {
+                "kind": "build"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": [
+                "meson cross c2wasm"
+            ],
+        }
+    ]
+}
