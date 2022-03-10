@@ -21,3 +21,7 @@ Docker Iamge for development environment of C/C++, [Emscripten](https://emscript
 - [Microsoft, "C/C++ Extension Pack",
 id: `ms-vscode.cpptools-extension-pack`](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 - [WebAssembly Foundation, "WebAssembly ", id: `dtsvet.vscode-wasm`](https://marketplace.visualstudio.com/items?itemName=dtsvet.vscode-wasm)
+
+## TIPS
+
+- project's patterns how to write Meson's `meson.build` file: https://mesonbuild.com/Users.html
