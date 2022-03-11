@@ -4,6 +4,7 @@ Docker Iamge for development environment of C/C++, [Emscripten](https://emscript
 
 - base image: [mcr.microsoft.com/vscode/devcontainers/cpp](https://github.com/microsoft/vscode-dev-containers/blob/v0.217.4/containers/cpp/.devcontainer/Dockerfile)
     - based on OS:Debian 11
+- image size: 2.97 GB
 
 
 ## installed packages/tools
