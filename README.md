@@ -26,6 +26,35 @@ Docker Iamge for development environment of C/C++, [Emscripten](https://emscript
 id: `ms-vscode.cpptools-extension-pack`](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 - [WebAssembly Foundation, "WebAssembly ", id: `dtsvet.vscode-wasm`](https://marketplace.visualstudio.com/items?itemName=dtsvet.vscode-wasm)
 
+## Example: How to switch compiler and linker on Meson to `clang` and `lld`(ld.lld)
+
+create `native_clang.ini`:
+
+```ini
+[binaries]
+c='clang'
+c_ld='lld'
+cpp='clang++'
+cpp_ld='lld'
+```
+
+`meson setup <build dir> <source dir> --native-file native_clang.ini` on termial:
+
+```bash
+$ meson setup build_c/build build_c --native-file build_c/native_clang.ini
+```
+
+result: 
+
+![result clang](img/result_clang.JPG)
+
+meson have been able to switched to `clang` and `lld` as bellow:
+
+```
+C compiler for the host machine: clang (clang 15.0.0 "clang version 15.0.0 (https://github.com/llvm/llvm-project fbce4a78035c32792b0a13cf1f169048b822c06b)")
+C linker for the host machine: clang ld.lld 11.0.1
+```
+
 ## TIPS
 
 - project's patterns how to write Meson's `meson.build` file: https://mesonbuild.com/Users.html
