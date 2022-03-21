@@ -1,0 +1,1 @@
+option('opt_c_lang', type: 'boolean', value: false)

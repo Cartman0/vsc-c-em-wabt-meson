@@ -1,9 +1,5 @@
 project('c2exe', 'c')
-
-env = environment()
-# set clang
-env.append('CC', 'clang')
-meson.add_devenv(env)
+# message('opt_c_lang:', get_option('opt_c_lang')) 
 
 src = '../hello.c'
 executable('hello', src)
