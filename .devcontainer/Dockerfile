@@ -13,10 +13,11 @@ ARG EMSCRIPTEN_REPO=https://github.com/emscripten-core/emsdk.git
 ENV EMSDK /emsdk
 
 # apt-get packages
-RUN echo "# apt-get packages:git" \ 
+RUN echo "# apt-get packages git" \ 
     && apt-get update && export DEBIAN_FRONTEND=noninteractive \
     && apt-get -y install --no-install-recommends \
     git \
+    && rm -rf /var/lib/apt/lists/* \
     && echo "# Done"
 
 # install EMSDK
@@ -74,14 +75,16 @@ RUN echo "# Install WABT" \
     && make \
     && echo "# Done"
 
-# Meson
+# install lld, python
 RUN echo "# Install python for Meson" \
     && sudo apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && sudo apt-get -y install python3 \
+    && sudo apt-get -y install lld \
+    python3 \
     python3-pip \
     python3-setuptools \
     python3-wheel \
     ninja-build \
+    && rm -rf /var/lib/apt/lists/* \
     && echo "# Done"
 
 RUN echo "# Install Meson" \

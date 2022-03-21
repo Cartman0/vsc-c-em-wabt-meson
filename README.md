@@ -10,6 +10,7 @@ Docker Iamge for development environment of C/C++, [Emscripten](https://emscript
 ## installed packages/tools
 
 - gcc/clang
+- llvm/lld
 - [emscripten](https://github.com/emscripten-core/emsdk/blob/main/docker/Dockerfile)
     - Node.js installed with emscripten
 - [WABT](https://github.com/WebAssembly/wabt) (wasm2wat, etc)
