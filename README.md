@@ -28,6 +28,20 @@ id: `ms-vscode.cpptools-extension-pack`](https://marketplace.visualstudio.com/it
 
 ## Example: How to switch compiler and linker on Meson to `clang` and `lld`(ld.lld)
 
+```mermaid 
+graph BT
+    subgraph "--native-file native_clang.ini"
+        c["c: clang"]
+        cld["c_ld: lld(ld.lld)"]
+        subgraph "default native"
+            c_d["c: gcc"]
+            cld_d["c_ld: ld"]
+        end
+        c_d -..-> c
+        cld_d -..-> cld
+    end
+```
+
 create `native_clang.ini`:
 
 ```ini
