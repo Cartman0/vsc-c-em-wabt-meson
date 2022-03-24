@@ -26,6 +26,17 @@ Docker Iamge for development environment of C/C++, [Emscripten](https://emscript
 id: `ms-vscode.cpptools-extension-pack`](https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools-extension-pack)
 - [WebAssembly Foundation, "WebAssembly ", id: `dtsvet.vscode-wasm`](https://marketplace.visualstudio.com/items?itemName=dtsvet.vscode-wasm)
 
+## Installation
+
+```bash
+$ git clone https://github.com/Cartman0/vsc-c-em-wabt-meson.git
+$ cd vsc-c-em-wabt-meson
+$ code .
+```
+
+1. Click "Remote Container" on LeftBottom in VSCode.
+2. "Reopen in Container" or "Open Folder in Container"
+
 ## Example: How to switch compiler and linker on Meson to `clang` and `lld`(ld.lld)
 
 ```mermaid 
