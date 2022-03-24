@@ -28,7 +28,9 @@ id: `ms-vscode.cpptools-extension-pack`](https://marketplace.visualstudio.com/it
 
 ## Installation
 
-```bash
+On local env's terminal(e.g. windows):
+
+```cmd
 $ git clone https://github.com/Cartman0/vsc-c-em-wabt-meson.git
 $ cd vsc-c-em-wabt-meson
 $ code .
